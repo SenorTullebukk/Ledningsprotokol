@@ -1,7 +1,4 @@
 from Funktioner import *
-import streamlit as st
-import tempfile
-
 
 def Startprogram():
     st.subheader("Vælg MicroStation DGN fil")
