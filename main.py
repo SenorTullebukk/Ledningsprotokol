@@ -18,7 +18,7 @@ def Startprogram():
 
         mspy_script_path = "MsPy_fil.py"
 
-'''        # Add a button to confirm before proceeding
+        # Add a button to confirm before proceeding
         if st.button("Kør"):
             # Run the processing function
             print('no')
@@ -29,4 +29,4 @@ def Startprogram():
             visible=True,
             wait_timeout_s=600,
             autosave=False
-            )'''
+            )
