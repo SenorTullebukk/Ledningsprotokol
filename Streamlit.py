@@ -24,7 +24,7 @@ with st.sidebar:
 # Page content
 if selected_page == "Ledningsprotokol":
     st.title(pages[selected_page])
-    main()
+    #main()
 
 
 elif selected_page == "Om":
