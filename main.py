@@ -2,12 +2,6 @@ from Funktioner import *
 import streamlit as st
 import tempfile
 
-def main():
-    # Kør først Startprogram
-    Startprogram()
-    # Når Startprogram er færdig, kør andet_program automatisk
-    andet_program()
-
 
 def Startprogram():
     st.subheader("Vælg MicroStation DGN fil")
@@ -24,7 +18,7 @@ def Startprogram():
 
         mspy_script_path = "MsPy_fil.py"
 
-        # Add a button to confirm before proceeding
+'''        # Add a button to confirm before proceeding
         if st.button("Kør"):
             # Run the processing function
             print('no')
@@ -35,8 +29,4 @@ def Startprogram():
             visible=True,
             wait_timeout_s=600,
             autosave=False
-            )
-            
-
-def andet_program():
-    st.write("Andet program funktionalitet kan tilføjes her.")
+            )'''

@@ -1,5 +1,5 @@
 import streamlit as st
-#from main import *
+from main import *
 
 st.set_page_config(
     page_title="Automatisk ledningsprotokol",
@@ -24,7 +24,7 @@ with st.sidebar:
 # Page content
 if selected_page == "Ledningsprotokol":
     st.title(pages[selected_page])
-    #main()
+    Startprogram()
 
 
 elif selected_page == "Om":
