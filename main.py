@@ -40,4 +40,3 @@ def Startprogram():
 
 def andet_program():
     st.write("Andet program funktionalitet kan tilføjes her.")
-
