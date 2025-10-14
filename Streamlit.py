@@ -1,5 +1,5 @@
 import streamlit as st
-from main import *
+#from main import *
 
 st.set_page_config(
     page_title="Automatisk ledningsprotokol",
