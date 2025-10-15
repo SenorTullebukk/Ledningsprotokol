@@ -39,7 +39,7 @@ elif selected_page == "Scepterplacering":
         data=file_content,
         file_name="ScepterScript.py",
         mime="text/x-python",
-        disabled=False
+        disabled=True
     )
 
 elif selected_page == "Om":
