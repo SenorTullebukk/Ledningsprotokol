@@ -12,6 +12,7 @@ st.set_page_config(
 # Define pages
 pages = {
     "Ledningsprotokol": "Automatisk ledningsprotokol",
+    "Scepterplacering": "Automatisk scepterplacering",
     "Om": "Om",
 }
 
@@ -24,10 +25,12 @@ with st.sidebar:
 # Page content
 if selected_page == "Ledningsprotokol":
     st.title(pages[selected_page])
-    Startprogram()
+    #Startprogram()
 
+elif selected_page == "Scepterplacering":
+    st.title(pages[selected_page])
+    #Scepterplacering()
 
 elif selected_page == "Om":
     st.title(pages[selected_page])
     st.write("Skriv en mail til JHAA hvis der er fejl, eller hvis du har forslag til forbedringer eller funktioner den mangler.")
-
