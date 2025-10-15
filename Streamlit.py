@@ -30,11 +30,14 @@ if selected_page == "Ledningsprotokol":
 elif selected_page == "Scepterplacering":
     st.title(pages[selected_page])
     #Scepterplacering()
+    # Load the file content to be downloaded
+    with open("Diverse/ScepterScript.py", "r", encoding="utf-8") as f:
+        file_content = f.read()
     st.download_button(
         label="Download Scepterplacering Script til MicroStation",
-        data=file,
+        data=file_content,
         file_name="Diverse/ScepterScript.py",
-        #mime="text/x-python"
+        mime="text/x-python"
     )
 
 elif selected_page == "Om":
