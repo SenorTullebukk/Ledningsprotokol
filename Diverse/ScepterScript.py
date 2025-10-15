@@ -139,12 +139,12 @@ if __name__ == "__main__":
         root = tk.Tk()
         root.withdraw()
         save_path = filedialog.asksaveasfilename(
-            defaultextension=".pkl",
-            filetypes=[("Pickle files", "*.pkl"), ("All files", "*.*")],
+            defaultextension=".xlsx",
+            filetypes=[("Excel files", "*.xlsx"), ("All files", "*.*")],
             title="Vælg hvor filen skal gemmes"
         )
         if save_path:
-            df.to_pickle(save_path)
+            df.to_excel(save_path, index=False)
             print(f"Data gemt til: {save_path}")
         else:
             print("Ingen fil valgt. Data blev ikke gemt.")
