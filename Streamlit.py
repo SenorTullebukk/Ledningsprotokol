@@ -49,5 +49,6 @@ elif selected_page == 'Guide':
     st.title(pages[selected_page])
     st.write('''
              Beskrivelse af hvordan man bruger de forskellige funktioner i programmet.\\
+             Det er vigtigt at man har referede de forskellige LER ind i en fil, dersom det er vigtigt at differencere imellem ledningsejere.\\
              Skriv en mail til JHAA hvis der er fejl, eller hvis du har forslag til forbedringer eller funktioner den mangler.
              ''')
