@@ -37,9 +37,9 @@ elif selected_page == "Scepterplacering":
     st.download_button(
         label="Download Python script til MicroStation",
         data=file_content,
-        file_name="Diverse/ScepterScript.py",
+        file_name="ScepterScript.py",
         mime="text/x-python",
-        disabled=True
+        disabled=False
     )
 
 elif selected_page == "Om":
