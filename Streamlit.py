@@ -13,7 +13,7 @@ st.set_page_config(
 pages = {
     "Ledningsprotokol": "Automatisk ledningsprotokol",
     "Scepterplacering": "Automatisk scepterplacering",
-    "Om": "Om",
+    'Guide': 'Guide',
 }
 
 # Sidebar toggle
@@ -42,6 +42,6 @@ elif selected_page == "Scepterplacering":
         disabled=True
     )
 
-elif selected_page == "Om":
+elif selected_page == 'Guide':
     st.title(pages[selected_page])
-    st.write("Skriv en mail til JHAA hvis der er fejl, eller hvis du har forslag til forbedringer eller funktioner den mangler.")
+    st.write("Beskrivelse af hvordan man bruger de forskellige funktioner i programmet. \\Skriv en mail til JHAA hvis der er fejl, eller hvis du har forslag til forbedringer eller funktioner den mangler.")
