@@ -38,7 +38,8 @@ elif selected_page == "Scepterplacering":
         label="Download Python script til MicroStation",
         data=file_content,
         file_name="Diverse/ScepterScript.py",
-        mime="text/x-python"
+        mime="text/x-python",
+        disabled=True
     )
 
 elif selected_page == "Om":
