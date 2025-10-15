@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(
     page_title="Automatisk ledningsprotokol",
     layout="centered",
-    page_icon=r"Billeder/n.ico"
+    page_icon="Billeder/N.png"
 )
 
 # Sidebar menu with navigation
