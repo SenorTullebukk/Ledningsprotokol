@@ -11,16 +11,12 @@ import pandas as pd
 import os
 
 def get_lines_and_linestrings_in_model(dgnModel, modelName):
-    """
-    Collects all line and linestring elements in the given model.
-    Returns a pandas DataFrame with element info, including level and filename.
-    """
     graphicalElements = dgnModel.GetGraphicElements()
     rows = []
     dgnFile = dgnModel.GetDgnFile()
-    fileName = os.path.basename(dgnFile.FileName) if dgnFile is not None else ""
+    fileName = os.path.basename(str(dgnFile.FileName)) if dgnFile is not None else ""
     # Prepare level cache once per model
-    levelCache = dgnFile.GetLevelCache() if dgnFile is not None else None
+    levelCache = dgnModel.GetLevelCache() if dgnModel is not None else None
 
     for elemRef in graphicalElements:
         eeh = EditElementHandle(elemRef, dgnModel)
@@ -38,6 +34,7 @@ def get_lines_and_linestrings_in_model(dgnModel, modelName):
             levelName = ""
         if elemType == MSElementTypes.eLINE_ELM:
             try:
+                # Use line_3d or line_2d property as available
                 if hasattr(msElem, "line_3d"):
                     start = msElem.line_3d.start
                     end = msElem.line_3d.end
@@ -46,13 +43,16 @@ def get_lines_and_linestrings_in_model(dgnModel, modelName):
                     end = msElem.line_2d.end
                 else:
                     continue
+                # Always provide z for 2d as 0.0
+                start_str = f"({start.x},{start.y},{getattr(start,'z',0.0)})"
+                end_str = f"({end.x},{end.y},{getattr(end,'z',0.0)})"
                 rows.append({
                     "Model": modelName,
                     "FileName": fileName,
                     "Level": levelName,
                     "ElementType": "Line",
                     "ElementId": str(eeh.GetElementId()),
-                    "Vertices": f"({start.x},{start.y},{getattr(start,'z',0.0)}) ; ({end.x},{end.y},{getattr(end,'z',0.0)})"
+                    "Vertices": f"{start_str} ; {end_str}"
                 })
             except Exception as ex:
                 rows.append({
@@ -65,6 +65,7 @@ def get_lines_and_linestrings_in_model(dgnModel, modelName):
                 })
         elif elemType == MSElementTypes.eLINE_STRING_ELM:
             try:
+                # Use ICurvePathQuery to get CurveVector
                 curve = ICurvePathQuery.ElementToCurveVector(eeh)
                 if curve is not None:
                     for i in range(len(curve)):
@@ -134,15 +135,16 @@ if __name__ == "__main__":
     df = get_lines_and_linestrings_dataframe()
     if df is None or df.empty:
         print("Ingen geometri fundet i filen.")
-    root = tk.Tk()
-    root.withdraw()
-    save_path = filedialog.asksaveasfilename(
-        defaultextension=".pkl",
-        filetypes=[("Pickle files", "*.pkl"), ("All files", "*.*")],
-        title="Vælg hvor filen skal gemmes"
-    )
-    if save_path:
-        df.to_pickle(save_path)
-        print(f"Data gemt til: {save_path}")
     else:
-        print("Ingen fil valgt. Data blev ikke gemt.")
+        root = tk.Tk()
+        root.withdraw()
+        save_path = filedialog.asksaveasfilename(
+            defaultextension=".pkl",
+            filetypes=[("Pickle files", "*.pkl"), ("All files", "*.*")],
+            title="Vælg hvor filen skal gemmes"
+        )
+        if save_path:
+            df.to_pickle(save_path)
+            print(f"Data gemt til: {save_path}")
+        else:
+            print("Ingen fil valgt. Data blev ikke gemt.")
