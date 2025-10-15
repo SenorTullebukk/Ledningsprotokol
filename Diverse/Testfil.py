@@ -1,7 +1,7 @@
 import pandas as pd
 import itertools
 
-df = pd.read_excel('Diverse/test.xlsx')
+df = pd.read_excel('Diverse/SepterFil.xlsx')
 
 import matplotlib.pyplot as plt
 
