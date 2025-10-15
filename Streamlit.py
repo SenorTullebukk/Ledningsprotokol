@@ -31,10 +31,11 @@ elif selected_page == "Scepterplacering":
     st.title(pages[selected_page])
     #Scepterplacering()
     # Load the file content to be downloaded
+    st.write("Der er pt. ikke nogen funktionalitet her, men det er planen at der skal være mulighed for at finde placeringer til septere automatisk.")
     with open("Diverse/ScepterScript.py", "r", encoding="utf-8") as f:
         file_content = f.read()
     st.download_button(
-        label="Download Scepterplacering Script til MicroStation",
+        label="Download Python script til MicroStation",
         data=file_content,
         file_name="Diverse/ScepterScript.py",
         mime="text/x-python"
