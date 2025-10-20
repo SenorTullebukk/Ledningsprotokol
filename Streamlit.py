@@ -35,6 +35,9 @@ elif selected_page == "Scepterplacering":
              Der er pt. ikke nogen funktionalitet her, men det er planen at der skal være mulighed for at finde placeringer til septere automatisk.\\
              Jeg mangler lige en ABC til hvad som skal være resultatet, af scriptet.
              ''')
+    uploaded_file = st.file_uploader("Geometri", type=["dxf"], help="Vælg en DXF-fil", accept_multiple_files=True)
+    print(uploaded_file)
+    
     with open("Diverse/ScepterScript.py", "r", encoding="utf-8") as f:
         file_content = f.read()
     st.download_button(
