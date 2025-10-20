@@ -32,7 +32,7 @@ elif selected_page == "Scepterplacering":
     #Scepterplacering()
     # Load the file content to be downloaded
     st.write('''
-             Der er pt. ikke nogen funktionalitet her, men det er planen at der skal være mulighed for at finde placeringer til septere automatisk.\\
+             DDer er pt. ikke nogen funktionalitet her, men det er planen at der skal være mulighed for at finde placeringer til septere automatisk.\\
              Jeg mangler lige en ABC til hvad som skal være resultatet, af scriptet.
              ''')
     with open("Diverse/ScepterScript.py", "r", encoding="utf-8") as f:
