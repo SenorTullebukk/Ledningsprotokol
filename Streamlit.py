@@ -40,38 +40,9 @@ elif selected_page == "Scepterplacering":
     if uploaded_files:
         files = uploaded_files if isinstance(uploaded_files, list) else [uploaded_files]
         st.write(f"Modtog {len(files)} fil(er):")
-        for uploaded in files:
-            st.write(uploaded.name)
-            try:
-                content = uploaded.read()
-                st.write(f"Størrelse: {len(content)} bytes")
-                uploaded.seek(0)
-            except Exception as e:
-                st.write("Kunne ikke læse fil:", e)
     else:
         st.write("Ingen fil valgt")
     
-    import os
-    script_path = "Diverse/ScepterScript.py"
-    if os.path.exists(script_path):
-        with open(script_path, "r", encoding="utf-8") as f:
-            file_content = f.read()
-        st.download_button(
-            label="Download Python script til MicroStation",
-            data=file_content,
-            file_name="ScepterScript.py",
-            mime="text/x-python",
-        )
-    else:
-        st.warning(f"Kunne ikke finde scriptet: {script_path}")
-        st.download_button(
-            label="Download Python script til MicroStation",
-            data="",
-            file_name="ScepterScript.py",
-            mime="text/x-python",
-            disabled=True
-        )
-
 elif selected_page == 'Guide':
     st.title(pages[selected_page])
     st.write('''
