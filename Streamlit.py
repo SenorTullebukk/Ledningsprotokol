@@ -1,5 +1,6 @@
 import streamlit as st
-#from main import *
+from main_scepter import *
+from main_ledning import *
 
 st.set_page_config(
     page_title="Automatisk ledningsprotokol",
@@ -25,23 +26,11 @@ with st.sidebar:
 # Page content
 if selected_page == "Ledningsprotokol":
     st.title(pages[selected_page])
-    #Startprogram()
+    Start_ledningsprogram()
 
 elif selected_page == "Scepterplacering":
     st.title(pages[selected_page])
-    #Scepterplacering()
-    # Load the file content to be downloaded
-    st.write('''
-             Der er pt. ikke nogen funktionalitet her, men det er planen at der skal være mulighed for at finde placeringer til septere automatisk.\\
-             Jeg mangler lige en ABC til hvad som skal være resultatet, af scriptet.
-             ''')
-    
-    uploaded_files = st.file_uploader("Geometri", type=["dxf"], help="Vælg en DXF-fil", accept_multiple_files=True)
-    if uploaded_files:
-        files = uploaded_files if isinstance(uploaded_files, list) else [uploaded_files]
-        st.write(f"Modtog {len(files)} fil(er):")
-    else:
-        st.write("Ingen fil valgt")
+    Start_Scepterplacering()
     
 elif selected_page == 'Guide':
     st.title(pages[selected_page])
@@ -49,4 +38,8 @@ elif selected_page == 'Guide':
              Beskrivelse af hvordan man bruger de forskellige funktioner i programmet.\\
              Det er vigtigt at man har referede de forskellige LER ind i en fil, dersom det er vigtigt at differencere imellem ledningsejere.\\
              Skriv en mail til JHAA hvis der er fejl, eller hvis du har forslag til forbedringer eller funktioner den mangler.
+             ''')
+    st.header('Batch konvertering af DGN til DXF')
+    st.write('''
+             En guide til hvordan man konvertere flere DGN filer til DXF filer på en gang.\\
              ''')
