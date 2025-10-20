@@ -1,4 +1,9 @@
-from Funktioner import *
+import streamlit as st
+import tempfile
+import pandas as pd
+import geopandas as gpd
+import tempfile
+import os
 
 def load_uploaded_dxf_files(uploaded_list):
         gdfs_local = {}
