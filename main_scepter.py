@@ -11,3 +11,35 @@ def Start_Scepterplacering():
         st.write(f"Modtog {len(files)} fil(er).")
     else:
         st.write("Ingen fil valgt")
+    DS_respektafstande = pd.read_excel("Diverse/Respektafstand_DS.xlsx")
+    
+    # Vis indholdet af Excel-arket med respektafstande
+    try:
+        if 'DS_respektafstande' in locals() and not DS_respektafstande.empty:
+            st.write("DS_respektafstande (fra Diverse/Respektafstand_DS.xlsx):")
+            st.dataframe(DS_respektafstande)
+        else:
+            st.write("DS_respektafstande ikke fundet eller tom.")
+    except Exception as e:
+        st.write(f"Fejl ved visning af DS_respektafstande: {e}")
+
+    gdfs = {}
+    gdfs = load_uploaded_dxf_files(files) if 'files' in locals() else {}
+    import matplotlib.pyplot as plt
+
+    if not gdfs:
+        st.write("Ingen geodataframes at plotte.")
+    else:
+        for name, gdf in gdfs.items():
+            if gdf is None or gdf.empty:
+                st.write(f"{name}: tom geodataframe.")
+                continue
+            if 'geometry' not in gdf:
+                st.write(f"{name}: ingen 'geometry' kolonne.")
+                continue
+            fig, ax = plt.subplots(figsize=(6, 6))
+            gdf.plot(ax=ax, color='none', edgecolor='black', linewidth=0.6)
+            ax.set_title(f"{name} — {len(gdf)} features")
+            ax.axis('off')
+            st.pyplot(fig)
+    st.write(f"Indlæst {len(gdfs)} geodataframe(s).")
