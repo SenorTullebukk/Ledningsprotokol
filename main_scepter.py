@@ -12,16 +12,6 @@ def Start_Scepterplacering():
     else:
         st.write("Ingen fil valgt")
     DS_respektafstande = pd.read_excel("Diverse/Respektafstand_DS.xlsx")
-    
-    # Vis indholdet af Excel-arket med respektafstande
-    try:
-        if 'DS_respektafstande' in locals() and not DS_respektafstande.empty:
-            st.write("DS_respektafstande (fra Diverse/Respektafstand_DS.xlsx):")
-            st.dataframe(DS_respektafstande)
-        else:
-            st.write("DS_respektafstande ikke fundet eller tom.")
-    except Exception as e:
-        st.write(f"Fejl ved visning af DS_respektafstande: {e}")
 
     gdfs = {}
     gdfs = load_uploaded_dxf_files(files) if 'files' in locals() else {}
