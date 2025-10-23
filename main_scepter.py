@@ -1,4 +1,9 @@
-from Funktioner import *
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import math
+import ezdxf
+from pathlib import Path
+from shapely.geometry import LineString, Polygon, Point
 
 def Start_scepterprogram():
     data_dir = Path(__file__).resolve().parent / "Diverse" / "DXF_Filer"
