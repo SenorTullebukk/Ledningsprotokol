@@ -26,11 +26,11 @@ with st.sidebar:
 # Page content
 if selected_page == "Ledningsprotokol":
     st.title(pages[selected_page])
-    Start_ledningsprogram()
+    #Start_ledningsprogram()
 
 elif selected_page == "Scepterplacering":
     st.title(pages[selected_page])
-    Start_Scepterplacering()
+    #Start_Scepterplacering()
     
 elif selected_page == 'Guide':
     st.title(pages[selected_page])
